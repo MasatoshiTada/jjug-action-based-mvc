@@ -50,25 +50,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.glassfish.jersey.ext</groupId>
-            <artifactId>jersey-mvc-bean-validation</artifactId>
-            <scope>compile</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.glassfish.jersey.ext</groupId>
-                    <artifactId>jersey-mvc</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.glassfish.jersey.ext</groupId>
-                    <artifactId>jersey-bean-validation</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>javax.ws.rs</groupId>
-                    <artifactId>javax.ws.rs-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
             <groupId>org.glassfish.web</groupId>
             <artifactId>javax.servlet.jsp.jstl</artifactId>
             <version>1.2.4</version>

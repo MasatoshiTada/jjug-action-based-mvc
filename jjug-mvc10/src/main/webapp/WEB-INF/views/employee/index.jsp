@@ -10,10 +10,10 @@
     <p>社員IDを入力してください(77, 88, 99で例外発生)</p>
 
     <%-- 検証エラーメッセージの表示 --%>
-    <c:if test="${not empty violations}">
+    <c:if test="${not empty bindingResult}">
         <ul class="error">
-        <c:forEach items="${violations}" var="violation">
-            <li><c:out value="${violation.message}"/></li>
+        <c:forEach items="${bindingResult.allMessages}" var="message">
+            <li><c:out value="${message}"/></li>
         </c:forEach>
         </ul>
     </c:if>
