@@ -10,16 +10,16 @@
     <p>社員IDを入力してください(77, 88, 99で例外発生)</p>
 
     <%-- 検証エラーメッセージの表示 --%>
-    <c:if test="${not empty errors}">
+    <c:if test="${not empty violations}">
         <ul class="error">
-        <c:forEach items="${errors}" var="error">
-            <li><c:out value="${error}"/></li>
+        <c:forEach items="${violations}" var="violation">
+            <li><c:out value="${violation.message}"/></li>
         </c:forEach>
         </ul>
     </c:if>
 
     <form action="./result" method="get">
-        社員ID：<input type="text" name="id">
+        社員ID：<input type="text" name="id" value="<c:out value="${param.id}"/>">
         <input type="submit" value="検索">
     </form>
 </body>

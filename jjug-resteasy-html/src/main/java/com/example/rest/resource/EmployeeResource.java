@@ -1,25 +1,28 @@
 package com.example.rest.resource;
 
 import com.example.persistence.entity.Employee;
-import com.example.rest.feature.ValidationTemplate;
+import com.example.rest.form.EmployeeIdForm;
 import com.example.service.EmployeeService;
-import org.hibernate.validator.constraints.NotBlank;
 import org.jboss.resteasy.plugins.providers.html.Renderable;
 import org.jboss.resteasy.plugins.providers.html.View;
 
 import javax.inject.Inject;
-import javax.validation.constraints.Pattern;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
+import javax.ws.rs.BeanParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
 import java.io.IOException;
-import java.util.Optional;
+import java.util.Set;
 
 @Path("employee")
 public class EmployeeResource {
 
     @Inject
     private EmployeeService employeeService;
+
+    @Inject
+    private Validator validator;
 
     @GET
     @Path("index")
@@ -29,11 +32,14 @@ public class EmployeeResource {
 
     @GET
     @Path("result")
-    @ValidationTemplate("/WEB-INF/views/employee/index.jsp")
-    public Renderable result(@QueryParam("id")
-            @NotBlank(message = "{employee.id.notblank}")
-            @Pattern(regexp = "[1-9][0-9]*", message = "{employee.id.pattern}") String idStr) throws Exception {
-        Integer id = Integer.valueOf(idStr);
+    public Renderable result(@BeanParam EmployeeIdForm form) throws Exception {
+        // バリデーション実行
+        Set<ConstraintViolation<EmployeeIdForm>> violations = validator.validate(form);
+        // エラーがあれば入力画面に戻る
+        if (!violations.isEmpty()) {
+            return new View("/WEB-INF/views/employee/index.jsp", violations, "violations");
+        }
+        Integer id = Integer.valueOf(form.getId());
         throwException(id);
         Employee employee = employeeService.findByEmpId(id);
         return new View("/WEB-INF/views/employee/result.jsp", employee, "employee");
