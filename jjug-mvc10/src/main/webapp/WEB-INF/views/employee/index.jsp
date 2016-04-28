@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>入力画面</title>
-    <meta charset="utf-8">
     <link rel="stylesheet" href="${mvc.contextPath}/css/style.css">
 </head>
 <body>
