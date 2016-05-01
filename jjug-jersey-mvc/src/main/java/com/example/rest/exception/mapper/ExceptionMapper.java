@@ -23,7 +23,7 @@ public class ExceptionMapper implements javax.ws.rs.ext.ExceptionMapper<Exceptio
         HashMap<String, Object> model = new HashMap<>();
         model.put("exceptionDto", exceptionDto);
         return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                .entity(new Viewable("/error/exception", model))
+                .entity(new Viewable("/error/exception.html", model))
                 .build();
     }
     

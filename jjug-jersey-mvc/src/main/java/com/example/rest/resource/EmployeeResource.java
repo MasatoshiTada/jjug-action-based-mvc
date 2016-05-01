@@ -34,7 +34,7 @@ public class EmployeeResource {
     @GET
     @Path("index")
     public Viewable index() throws Exception {
-        return new Viewable("/employee/index");
+        return new Viewable("/employee/index.html");
     }
     
     @GET
@@ -46,14 +46,14 @@ public class EmployeeResource {
         if (!violations.isEmpty()) {
             HashMap<String, Object> model = new HashMap<>();
             model.put("violations", violations);
-            return new Viewable("/employee/index", model);
+            return new Viewable("/employee/index.html", model);
         }
         Integer id = Integer.valueOf(form.getId());
         throwException(id);
         Employee employee = employeeService.findByEmpId(id).orElse(null);
         HashMap<String, Object> model = new HashMap<>();
         model.put("employee", employee);
-        return new Viewable("/employee/result", model);
+        return new Viewable("/employee/result.html", model);
     }
 
     private void throwException(int value) throws Exception {
