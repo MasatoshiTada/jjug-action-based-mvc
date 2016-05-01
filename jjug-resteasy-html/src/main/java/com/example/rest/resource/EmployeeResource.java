@@ -3,7 +3,6 @@ package com.example.rest.resource;
 import com.example.persistence.entity.Employee;
 import com.example.rest.form.EmployeeIdForm;
 import com.example.service.EmployeeService;
-import org.jboss.resteasy.plugins.providers.html.Renderable;
 import org.jboss.resteasy.plugins.providers.html.View;
 
 import javax.inject.Inject;
@@ -13,6 +12,7 @@ import javax.ws.rs.BeanParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Set;
 
 @Path("employee")
@@ -26,23 +26,27 @@ public class EmployeeResource {
 
     @GET
     @Path("index")
-    public Renderable index() {
-        return new View("/WEB-INF/views/employee/index.jsp");
+    public View index() {
+        return new View("employee/index.html");
     }
 
     @GET
     @Path("result")
-    public Renderable result(@BeanParam EmployeeIdForm form) throws Exception {
+    public View result(@BeanParam EmployeeIdForm form) throws Exception {
         // バリデーション実行
         Set<ConstraintViolation<EmployeeIdForm>> violations = validator.validate(form);
         // エラーがあれば入力画面に戻る
         if (!violations.isEmpty()) {
-            return new View("/WEB-INF/views/employee/index.jsp", violations, "violations");
+            HashMap<String, Object> models = new HashMap<>();
+            models.put("violations", violations);
+            return new View("employee/index.html", models);
         }
         Integer id = Integer.valueOf(form.getId());
         throwException(id);
         Employee employee = employeeService.findByEmpId(id);
-        return new View("/WEB-INF/views/employee/result.jsp", employee, "employee");
+        HashMap<String, Object> models = new HashMap<>();
+        models.put("employee", employee);
+        return new View("employee/result.html", models);
     }
 
     private void throwException(int value) throws Exception {
