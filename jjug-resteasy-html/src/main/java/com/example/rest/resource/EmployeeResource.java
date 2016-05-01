@@ -1,9 +1,9 @@
 package com.example.rest.resource;
 
 import com.example.persistence.entity.Employee;
+import com.example.rest.thymeleaf.ThymeleafView;
 import com.example.rest.form.EmployeeIdForm;
 import com.example.service.EmployeeService;
-import org.jboss.resteasy.plugins.providers.html.View;
 
 import javax.inject.Inject;
 import javax.validation.ConstraintViolation;
@@ -26,27 +26,27 @@ public class EmployeeResource {
 
     @GET
     @Path("index")
-    public View index() {
-        return new View("employee/index.html");
+    public ThymeleafView index() {
+        return new ThymeleafView("employee/index.html");
     }
 
     @GET
     @Path("result")
-    public View result(@BeanParam EmployeeIdForm form) throws Exception {
+    public ThymeleafView result(@BeanParam EmployeeIdForm form) throws Exception {
         // バリデーション実行
         Set<ConstraintViolation<EmployeeIdForm>> violations = validator.validate(form);
         // エラーがあれば入力画面に戻る
         if (!violations.isEmpty()) {
             HashMap<String, Object> models = new HashMap<>();
             models.put("violations", violations);
-            return new View("employee/index.html", models);
+            return new ThymeleafView("employee/index.html", models);
         }
         Integer id = Integer.valueOf(form.getId());
         throwException(id);
         Employee employee = employeeService.findByEmpId(id);
         HashMap<String, Object> models = new HashMap<>();
         models.put("employee", employee);
-        return new View("employee/result.html", models);
+        return new ThymeleafView("employee/result.html", models);
     }
 
     private void throwException(int value) throws Exception {

@@ -1,6 +1,7 @@
-package com.example.rest.feature;
+package com.example.rest.thymeleaf;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,29 +13,28 @@ import org.thymeleaf.context.WebContext;
 
 public class ThymeleafView implements Renderable {
 
-    private TemplateEngine templateEngine;
     private String templateName;
-    private Object model;
-    private String modelName;
+    private Map<String, Object> models;
+    private TemplateEngine templateEngine;
 
-    public ThymeleafView(TemplateEngine templateEngine, String templateName, 
-            Object model, String modelName) {
-        this.templateEngine = templateEngine;
-        this.templateName = templateName;
-        this.model = model;
-        this.modelName = modelName;
+    public ThymeleafView(String templateName) {
+        this(templateName, new HashMap<>());
     }
-    
+
+    public ThymeleafView(String templateName, Map<String, Object> models) {
+        this.templateName = templateName;
+        this.models = models;
+    }
+
+    void setTemplateEngine(TemplateEngine templateEngine) {
+        this.templateEngine = templateEngine;
+    }
+
     @Override
     public void render(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, WebApplicationException {
-        WebContext webContext = new WebContext(request, response, request.getServletContext(), request.getLocale());
         response.setCharacterEncoding("UTF-8");
-        if (model instanceof Map) {
-            Map<String, Object> variables = (Map<String, Object>) model;
-            webContext.setVariables(variables);
-        } else if (modelName != null) {
-            webContext.setVariable(modelName, model);
-        }
+        WebContext webContext = new WebContext(request, response, request.getServletContext(), request.getLocale());
+        webContext.setVariables(models);
         templateEngine.process(templateName, webContext, response.getWriter());
     }
     

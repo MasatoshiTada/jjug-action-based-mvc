@@ -1,10 +1,9 @@
-package com.example.rest.feature;
+package com.example.rest.thymeleaf;
 
 import javax.ws.rs.container.DynamicFeature;
 import javax.ws.rs.container.ResourceInfo;
 import javax.ws.rs.core.FeatureContext;
 import javax.ws.rs.ext.Provider;
-import org.jboss.resteasy.plugins.providers.html.View;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import org.thymeleaf.templateresolver.TemplateResolver;
@@ -25,8 +24,8 @@ public class ThymeleafDynamicFeature implements DynamicFeature {
     @Override
     public void configure(ResourceInfo resourceInfo, FeatureContext context) {
         Class<?> returnType = resourceInfo.getResourceMethod().getReturnType();
-        if (returnType.equals(View.class)) {
-            context.register(new ThymeleafResponseFilter(templateEngine));
+        if (returnType.equals(ThymeleafView.class)) {
+            context.register(new ThymeleafWriterInterceptor(templateEngine));
         }
     }
     
