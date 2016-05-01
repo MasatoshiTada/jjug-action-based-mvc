@@ -1,6 +1,7 @@
 package com.example.rest.resource;
 
 import com.example.persistence.entity.Employee;
+import com.example.rest.thymeleaf.Controller;
 import com.example.rest.thymeleaf.ThymeleafView;
 import com.example.rest.form.EmployeeIdForm;
 import com.example.service.EmployeeService;
@@ -26,12 +27,14 @@ public class EmployeeResource {
 
     @GET
     @Path("index")
+    @Controller
     public ThymeleafView index() {
         return new ThymeleafView("employee/index.html");
     }
 
     @GET
     @Path("result")
+    @Controller
     public ThymeleafView result(@BeanParam EmployeeIdForm form) throws Exception {
         // バリデーション実行
         Set<ConstraintViolation<EmployeeIdForm>> violations = validator.validate(form);
