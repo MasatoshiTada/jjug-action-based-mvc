@@ -14,6 +14,7 @@ import org.glassfish.jersey.server.mvc.Viewable;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Set;
+import javax.ws.rs.core.MediaType;
 
 /**
  *
@@ -21,6 +22,7 @@ import java.util.Set;
  */
 @Path("employee")
 @RequestScoped
+@Produces(MediaType.TEXT_HTML)
 public class EmployeeResource {
     
     @Inject

@@ -17,6 +17,7 @@ public class ExceptionMapper implements javax.ws.rs.ext.ExceptionMapper<Exceptio
     
     @Override
     public Response toResponse(Exception exception) {
+        exception.printStackTrace();
         ExceptionDto exceptionDto = new ExceptionDto();
         exceptionDto.setMessage(exception.getMessage());
         HashMap<String, Object> model = new HashMap<>();
