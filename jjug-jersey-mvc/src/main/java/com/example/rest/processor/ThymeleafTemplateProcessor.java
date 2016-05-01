@@ -42,7 +42,7 @@ public class ThymeleafTemplateProcessor extends AbstractTemplateProcessor<String
         super(config, servletContext, "html", "html");
         TemplateResolver templateResolver = new ServletContextTemplateResolver();
         templateResolver.setPrefix((String) config.getProperty(MvcFeature.TEMPLATE_BASE_PATH));
-//        templateResolver.setSuffix(".html");
+        // setSuffix()は指定しない
         templateEngine = new TemplateEngine();
         templateEngine.setTemplateResolver(templateResolver);
     }
