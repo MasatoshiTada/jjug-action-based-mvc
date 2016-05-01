@@ -28,6 +28,12 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>org.glassfish.ozark.ext</groupId>
+            <artifactId>ozark-thymeleaf</artifactId>
+            <version>1.0.0-m02</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>5.1.3.Final</version>

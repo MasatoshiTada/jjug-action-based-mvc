@@ -12,11 +12,12 @@ import javax.ws.rs.ext.Provider;
 public class ExceptionMapper implements javax.ws.rs.ext.ExceptionMapper<Exception> {
     @Override
     public Response toResponse(Exception exception) {
+        exception.printStackTrace();
         ExceptionDto exceptionDto = new ExceptionDto();
         exceptionDto.setMessage(exception.getMessage());
         Models models = new ModelsImpl();
         models.put("exceptionDto", exceptionDto);
         return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                .entity(new Viewable("error/exception.jsp", models)).build();
+                .entity(new Viewable("error/exception.html", models)).build();
     }
 }

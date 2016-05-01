@@ -15,11 +15,14 @@ import javax.validation.executable.ValidateOnExecution;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.util.Optional;
 
 @Path("employee")
 @RequestScoped
+@Produces(MediaType.TEXT_HTML)
 public class EmployeeResource {
 
     @Inject
@@ -35,7 +38,7 @@ public class EmployeeResource {
     @Path("index")
     @Controller
     public String index() {
-        return "employee/index.jsp";
+        return "employee/index.html";
     }
 
     @GET
@@ -45,13 +48,13 @@ public class EmployeeResource {
     public String result(@Valid @BeanParam EmployeeIdForm form) throws Exception {
         if (bindingResult.isFailed()) {
             models.put("bindingResult", bindingResult);
-            return "employee/index.jsp";
+            return "employee/index.html";
         }
         Integer id = Integer.valueOf(form.getId());
         throwException(id);
         Optional<Employee> employeeOptional = employeeService.findByEmpId(Integer.valueOf(form.getId()));
         models.put("employee", employeeOptional.orElse(null));
-        return "employee/result.jsp";
+        return "employee/result.html";
     }
 
     private void throwException(int value) throws Exception {

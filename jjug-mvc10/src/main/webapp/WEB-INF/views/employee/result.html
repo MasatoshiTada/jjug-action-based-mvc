@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>結果画面</title>
+</head>
+<body>
+<p th:if="${employee == null}">該当する社員はいませんでした。</p>
+<table border="1" th:unless="${employee == null}">
+    <tr><th>社員ID</th><th>氏名</th><th>入社年月日</th><th>部署ID</th><th>部署名</th></tr>
+    <tr th:object="${employee}">
+        <td th:text="*{empId}">99999</td>
+        <td th:text="*{name}">Taro Yamada</td>
+        <td th:text="*{joinedDate}">2020-01-01</td>
+        <td th:text="*{department.deptId}">99</td>
+        <td th:text="*{department.name}">Admin</td>
+    </tr>
+</table>
+<a href="./index">入力画面へ</a>
+</body>
+</html>
