@@ -15,7 +15,6 @@ public class MyApplication extends ResourceConfig {
     public MyApplication() {
         // Jersey MVCを有効化する
         register(MvcFeature.class);
-//        register(ThymeleafTemplateProcessor.class);
         // ビューの保存フォルダを指定する
         property(MvcFeature.TEMPLATE_BASE_PATH, "/WEB-INF/views/");
         // このクラスが入っているパッケージ以下の全パッケージ内のクラスを登録対象にする
