@@ -2,14 +2,13 @@ package com.example.rest.resource;
 
 import com.example.persistence.entity.Employee;
 import com.example.rest.form.EmployeeIdForm;
+import com.example.rest.thymeleaf.ThymeleafViewable;
 import com.example.service.EmployeeService;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import javax.ws.rs.*;
-
-import org.glassfish.jersey.server.mvc.Viewable;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -33,27 +32,27 @@ public class EmployeeResource {
 
     @GET
     @Path("index")
-    public Viewable index() throws Exception {
-        return new Viewable("/employee/index.html");
+    public ThymeleafViewable index() throws Exception {
+        return new ThymeleafViewable("employee/index.html");
     }
     
     @GET
     @Path("result")
-    public Viewable result(@BeanParam EmployeeIdForm form) throws Exception {
+    public ThymeleafViewable result(@BeanParam EmployeeIdForm form) throws Exception {
         // バリデーション実行
         Set<ConstraintViolation<EmployeeIdForm>> violations = validator.validate(form);
         // エラーがあれば入力画面に戻る
         if (!violations.isEmpty()) {
             HashMap<String, Object> model = new HashMap<>();
             model.put("violations", violations);
-            return new Viewable("/employee/index.html", model);
+            return new ThymeleafViewable("employee/index.html", model);
         }
         Integer id = Integer.valueOf(form.getId());
         throwException(id);
         Employee employee = employeeService.findByEmpId(id).orElse(null);
-        HashMap<String, Object> model = new HashMap<>();
-        model.put("employee", employee);
-        return new Viewable("/employee/result.html", model);
+        HashMap<String, Object> models = new HashMap<>();
+        models.put("employee", employee);
+        return new ThymeleafViewable("employee/result.html", models);
     }
 
     private void throwException(int value) throws Exception {

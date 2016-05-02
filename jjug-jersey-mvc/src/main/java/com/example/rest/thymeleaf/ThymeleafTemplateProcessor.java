@@ -1,4 +1,4 @@
-package com.example.rest.processor;
+package com.example.rest.thymeleaf;
 
 import java.io.IOException;
 import java.io.OutputStream;

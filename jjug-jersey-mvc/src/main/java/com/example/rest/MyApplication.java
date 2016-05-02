@@ -1,6 +1,5 @@
 package com.example.rest;
 
-import com.example.rest.processor.ThymeleafTemplateProcessor;
 import javax.ws.rs.ApplicationPath;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.mvc.MvcFeature;
