@@ -1,4 +1,4 @@
-package com.example.rest.resource;
+package com.example.rest.controller;
 
 import com.example.persistence.entity.Employee;
 import com.example.rest.thymeleaf.Controller;
@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 @Path("employee")
-public class EmployeeResource {
+public class EmployeeController {
 
     @Inject
     private EmployeeService employeeService;

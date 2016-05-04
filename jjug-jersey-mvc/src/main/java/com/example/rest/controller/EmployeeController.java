@@ -1,4 +1,4 @@
-package com.example.rest.resource;
+package com.example.rest.controller;
 
 import com.example.persistence.entity.Employee;
 import com.example.rest.form.EmployeeIdForm;
@@ -22,7 +22,7 @@ import javax.ws.rs.core.MediaType;
 @Path("employee")
 @RequestScoped
 @Produces(MediaType.TEXT_HTML)
-public class EmployeeResource {
+public class EmployeeController {
     
     @Inject
     private EmployeeService employeeService;
