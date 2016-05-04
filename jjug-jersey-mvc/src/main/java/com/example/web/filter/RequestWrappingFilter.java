@@ -1,11 +1,13 @@
 package com.example.web.filter;
 
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import java.io.IOException;
 import java.util.Map;
 
+@WebFilter("/*")
 public class RequestWrappingFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
