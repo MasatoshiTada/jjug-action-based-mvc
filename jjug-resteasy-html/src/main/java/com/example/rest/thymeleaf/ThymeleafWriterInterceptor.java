@@ -12,7 +12,7 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import org.thymeleaf.templateresolver.TemplateResolver;
 
 @Provider
-@Controller
+@ThymeleafController
 public class ThymeleafWriterInterceptor implements WriterInterceptor {
 
     private TemplateEngine templateEngine;
