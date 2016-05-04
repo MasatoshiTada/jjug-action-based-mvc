@@ -23,6 +23,8 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import org.thymeleaf.templateresolver.TemplateResolver;
 
 /**
+ * Jersey MVCでThymeleafを処理するクラス。
+ * 下記のソースコードを参考に作りました。
  * @see org.glassfish.jersey.server.mvc.jsp.JspTemplateProcessor
  * @see http://bufferings.hatenablog.com/entry/2013/01/05/122307
  * @author tada
