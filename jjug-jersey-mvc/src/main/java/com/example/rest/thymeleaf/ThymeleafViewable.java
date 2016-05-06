@@ -15,6 +15,11 @@ public class ThymeleafViewable extends Viewable {
     }
 
     @Override
+    public Map<String, Object> getModel() {
+        return (Map<String, Object>) super.getModel();
+    }
+
+    @Override
     public String getTemplateName() {
         String templateName = super.getTemplateName();
         if (templateName.startsWith("/") == false) {
