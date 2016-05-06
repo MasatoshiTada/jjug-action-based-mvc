@@ -1,8 +1,6 @@
 package com.example.rest.thymeleaf;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.Reader;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import javax.inject.Inject;
@@ -72,8 +70,9 @@ public class ThymeleafTemplateProcessor extends AbstractTemplateProcessor<String
             variables.put("model", viewable.getModel());
             webContext.setVariables(variables);
         }
-        templateEngine.process(viewable.getTemplateName(), webContext, 
-                httpServletResponse.getWriter());
+        try (Writer writer = new OutputStreamWriter(out)) {
+            templateEngine.process(viewable.getTemplateName(), webContext, writer);
+        }
     }
 
 }
