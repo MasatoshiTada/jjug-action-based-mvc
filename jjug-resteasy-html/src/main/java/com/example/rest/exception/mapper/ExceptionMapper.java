@@ -2,7 +2,6 @@ package com.example.rest.exception.mapper;
 
 import com.example.rest.exception.dto.ExceptionDto;
 import com.example.rest.thymeleaf.ThymeleafView;
-import org.jboss.resteasy.plugins.providers.html.View;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;

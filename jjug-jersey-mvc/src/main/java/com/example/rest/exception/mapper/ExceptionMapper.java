@@ -20,10 +20,10 @@ public class ExceptionMapper implements javax.ws.rs.ext.ExceptionMapper<Exceptio
         exception.printStackTrace();
         ExceptionDto exceptionDto = new ExceptionDto();
         exceptionDto.setMessage(exception.getMessage());
-        HashMap<String, Object> model = new HashMap<>();
-        model.put("exceptionDto", exceptionDto);
+        HashMap<String, Object> models = new HashMap<>();
+        models.put("exceptionDto", exceptionDto);
         return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                .entity(new ThymeleafViewable("error/exception.html", model))
+                .entity(new ThymeleafViewable("error/exception.html", models))
                 .build();
     }
     
