@@ -25,6 +25,7 @@ import org.thymeleaf.templateresolver.TemplateResolver;
  * 下記のソースコードを参考に作りました。
  * @see org.glassfish.jersey.server.mvc.jsp.JspTemplateProcessor
  * @see http://bufferings.hatenablog.com/entry/2013/01/05/122307
+ * @see https://github.com/backpaper0/sealion/blob/master/src/main/java/sealion/ui/ThymeleafProvider.java
  * @author tada
  */
 @Provider
