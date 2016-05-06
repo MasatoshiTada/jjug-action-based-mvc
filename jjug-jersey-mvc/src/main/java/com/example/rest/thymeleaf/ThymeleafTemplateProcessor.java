@@ -61,10 +61,9 @@ public class ThymeleafTemplateProcessor extends AbstractTemplateProcessor<String
         WebContext webContext = new WebContext(
                 httpServletRequest, httpServletResponse, 
                 super.getServletContext(), httpServletRequest.getLocale());
-        Object model = viewable.getModel();
-        if (model instanceof Map) {
-            Map<String, Object> map = (Map) model;
-            webContext.setVariables(map);
+        if (viewable instanceof ThymeleafViewable) {
+            ThymeleafViewable thymeleafViewable = (ThymeleafViewable) viewable;
+            webContext.setVariables(thymeleafViewable.getModel());
         } else {
             Map<String, Object> variables = new HashMap<>();
             variables.put("model", viewable.getModel());
