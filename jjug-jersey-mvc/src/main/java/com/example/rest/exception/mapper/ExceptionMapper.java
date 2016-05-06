@@ -4,7 +4,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
 import com.example.rest.exception.dto.ExceptionDto;
-import org.glassfish.jersey.server.mvc.Viewable;
+import com.example.rest.thymeleaf.ThymeleafViewable;
 
 import java.util.HashMap;
 
@@ -23,7 +23,7 @@ public class ExceptionMapper implements javax.ws.rs.ext.ExceptionMapper<Exceptio
         HashMap<String, Object> model = new HashMap<>();
         model.put("exceptionDto", exceptionDto);
         return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                .entity(new Viewable("/error/exception.html", model))
+                .entity(new ThymeleafViewable("error/exception.html", model))
                 .build();
     }
     
