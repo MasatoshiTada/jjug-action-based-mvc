@@ -65,33 +65,11 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.glassfish.web</groupId>
-            <artifactId>javax.servlet.jsp.jstl</artifactId>
-            <version>1.2.4</version>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>javax.servlet</groupId>
-                    <artifactId>servlet-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>javax.servlet.jsp</groupId>
-                    <artifactId>jsp-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>5.0.7.Final</version>
             <scope>provided</scope>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>com.h2database</groupId>-->
-            <!--<artifactId>h2</artifactId>-->
-            <!--<version>1.4.191</version>-->
-            <!--<scope>compile</scope>-->
-        <!--</dependency>-->
     </dependencies>
 
     <build>
