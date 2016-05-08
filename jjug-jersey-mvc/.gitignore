@@ -1,4 +1,4 @@
 /target/
 /*.iml
-/*.sh
 /nb-configuration.xml
+/derby.log
