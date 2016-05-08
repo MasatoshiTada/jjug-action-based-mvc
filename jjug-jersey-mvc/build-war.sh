@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-export GF_HOME=~/Java/ap-server/payara-web-ml-161.1
+export GF_HOME=~/Java/ap-server/payara-web-ml-4.1.1.162
 mvn clean package
 $GF_HOME/bin/asadmin start-database
 $GF_HOME/bin/asadmin start-domain domain1
