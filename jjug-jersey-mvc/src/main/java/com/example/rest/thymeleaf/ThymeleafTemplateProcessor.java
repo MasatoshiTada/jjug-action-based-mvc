@@ -18,7 +18,6 @@ import org.glassfish.jersey.server.mvc.spi.AbstractTemplateProcessor;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-import org.thymeleaf.templateresolver.TemplateResolver;
 
 /**
  * Jersey MVCでThymeleafを処理するクラス。
@@ -41,7 +40,7 @@ public class ThymeleafTemplateProcessor extends AbstractTemplateProcessor<String
     @Inject
     public ThymeleafTemplateProcessor(Configuration config, ServletContext servletContext) {
         super(config, servletContext, "html", "html");
-        TemplateResolver templateResolver = new ServletContextTemplateResolver();
+        ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(servletContext);
         templateResolver.setPrefix((String) config.getProperty(MvcFeature.TEMPLATE_BASE_PATH));
         // setSuffix()は指定しない
         templateEngine = new TemplateEngine();
