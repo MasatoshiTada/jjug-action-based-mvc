@@ -28,9 +28,9 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.glassfish.ozark.ext</groupId>
-            <artifactId>ozark-thymeleaf</artifactId>
-            <version>1.0.0-m02</version>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf</artifactId>
+            <version>3.0.0.RELEASE</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
