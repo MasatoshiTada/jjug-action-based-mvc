@@ -14,7 +14,7 @@
     <li th:each="message : ${bindingResult.allMessages}" th:text="${message}">ダミーのメッセージ</li>
 </ul>
 
-<form action="./result" method="get">
+<form action="./result.html" th:action="@{result}" method="get">
     社員ID：<input type="text" name="id" value="" th:value="${param.id == null} ? '' : ${param.id[0]}">
     <input type="submit" value="検索">
 </form>
