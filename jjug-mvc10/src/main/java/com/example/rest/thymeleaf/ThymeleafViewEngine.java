@@ -2,6 +2,7 @@ package com.example.rest.thymeleaf;
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
+import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 import javax.annotation.PostConstruct;
@@ -33,6 +34,7 @@ public class ThymeleafViewEngine implements ViewEngine {
         ServletContextTemplateResolver resolver =
                 new ServletContextTemplateResolver(servletContext);
         resolver.setPrefix("/WEB-INF/views/");
+        resolver.setTemplateMode(TemplateMode.HTML);
         templateEngine = new TemplateEngine();
         templateEngine.setTemplateResolver(resolver);
     }

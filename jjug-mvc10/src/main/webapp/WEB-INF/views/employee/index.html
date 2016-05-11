@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>入力画面</title>
-    <link rel="stylesheet" href="../../../css/style.css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" href="../../../css/style.css" th:href="@{/css/style.css}">
 </head>
 <body>
 <p>社員IDを入力してください(77, 88, 99で例外発生)</p>
@@ -15,8 +15,8 @@
 </ul>
 
 <form action="./result" method="get">
-    社員ID：<input type="text" name="id" value="" th:value="${param.id == null} ? '' : ${param.id[0]}"/>
-    <input type="submit" value="検索"/>
+    社員ID：<input type="text" name="id" value="" th:value="${param.id == null} ? '' : ${param.id[0]}">
+    <input type="submit" value="検索">
 </form>
 </body>
 </html>

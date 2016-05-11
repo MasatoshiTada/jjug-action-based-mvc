@@ -10,6 +10,7 @@ import javax.ws.rs.ext.WriterInterceptor;
 import javax.ws.rs.ext.WriterInterceptorContext;
 
 import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 @Provider
@@ -25,6 +26,7 @@ public class ThymeleafWriterInterceptor implements WriterInterceptor {
     public void init() {
         ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(servletContext);
         templateResolver.setPrefix("/WEB-INF/views/");
+        templateResolver.setTemplateMode(TemplateMode.HTML);
         // setSuffix()は指定しない
         templateEngine = new TemplateEngine();
         templateEngine.setTemplateResolver(templateResolver);
