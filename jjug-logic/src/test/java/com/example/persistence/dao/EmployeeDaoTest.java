@@ -15,7 +15,7 @@ import java.util.Optional;
 /**
  * このテストクラス実行前にPayara内包のJavaDBを起動してください。
  * 例：
- * /path/to/payara/bin/asadmin.sh start-database
+ * /path/to/payara/bin/asadmin start-database
  */
 public class EmployeeDaoTest {
 
