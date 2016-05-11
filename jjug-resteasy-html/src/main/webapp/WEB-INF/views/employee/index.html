@@ -11,11 +11,14 @@
 
 <!--/* 検証エラーメッセージの表示 */-->
 <ul class="error" th:if="${violations}">
-    <li th:each="violation : ${violations}" th:text="${violation.message}">ダミーのメッセージ</li>
+    <li th:each="violation : ${violations}" th:text="${violation.message}">ダミーのメッセージ1</li>
+    <!--/*-->
+    <li>ダミーのメッセージ2</li>
+    <!--*/-->
 </ul>
 
 <form action="./result.html" th:action="@{result}" method="get">
-    社員ID：<input type="text" name="id" value="" th:value="${param.id == null} ? '' : ${param.id[0]}">
+    社員ID：<input type="text" name="id" value="" th:value="${param.id} ? ${param.id[0]} : ''">
     <input type="submit" value="検索">
 </form>
 </body>
