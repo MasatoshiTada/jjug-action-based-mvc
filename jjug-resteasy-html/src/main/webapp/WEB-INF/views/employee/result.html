@@ -12,7 +12,7 @@
     <tr th:object="${employee}">
         <td th:text="*{empId}">99999</td>
         <td th:text="*{name}">Taro Yamada</td>
-        <td th:text="*{joinedDate}">2020-01-01</td>
+        <td th:text="*{#dates.format(joinedDate, 'yyyy-MM-dd')}">2020-01-01</td>
         <td th:text="*{department.deptId}">99</td>
         <td th:text="*{department.name}">Admin</td>
     </tr>
