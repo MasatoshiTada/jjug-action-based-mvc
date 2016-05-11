@@ -2,7 +2,6 @@ package com.example.persistence.dao;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Optional;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -12,7 +11,7 @@ import javax.transaction.Transactional;
 @Dependent
 public class EmployeeDao implements Serializable {
     @Inject
-    private EntityManager em;
+    EntityManager entityManager;
 
     /**
      * 
@@ -20,7 +19,7 @@ public class EmployeeDao implements Serializable {
      */
     @Transactional(Transactional.TxType.REQUIRED)
     public List<com.example.persistence.entity.Employee> findAll() {
-        return em.createNamedQuery("Employee.findAll", com.example.persistence.entity.Employee.class)
+        return entityManager.createNamedQuery("Employee.findAll", com.example.persistence.entity.Employee.class)
                 .getResultList();
     }
     
@@ -32,7 +31,7 @@ public class EmployeeDao implements Serializable {
     @Transactional(Transactional.TxType.REQUIRED)
     public com.example.persistence.entity.Employee findByEmpId(Integer empId) {
         try {
-            return em.createNamedQuery("Employee.findByEmpIdJoinFetchDepartment", com.example.persistence.entity.Employee.class)
+            return entityManager.createNamedQuery("Employee.findByEmpIdJoinFetchDepartment", com.example.persistence.entity.Employee.class)
                     .setParameter("empId", empId)
                     .getSingleResult();
         } catch (NoResultException e) {
@@ -46,7 +45,7 @@ public class EmployeeDao implements Serializable {
      */
     @Transactional(Transactional.TxType.REQUIRED)
     public List<com.example.persistence.entity.Employee> findByName(String nameKey) {
-        return em.createNamedQuery("Employee.findByNameJoinFetchDepartment", com.example.persistence.entity.Employee.class)
+        return entityManager.createNamedQuery("Employee.findByNameJoinFetchDepartment", com.example.persistence.entity.Employee.class)
                 .setParameter("name", "%" + nameKey + "%")
                 .getResultList();
 //        throw new RuntimeException(); // 実行時例外が発生するとロールバックされる
@@ -54,17 +53,17 @@ public class EmployeeDao implements Serializable {
     
     @Transactional(Transactional.TxType.REQUIRED)
     public void insert(com.example.persistence.entity.Employee employee) {
-        em.persist(employee);
+        entityManager.persist(employee);
     }
     
     @Transactional(Transactional.TxType.REQUIRED)
     public void update(com.example.persistence.entity.Employee employee) {
-        em.merge(employee);
+        entityManager.merge(employee);
     }
     
     @Transactional(Transactional.TxType.REQUIRED)
     public void delete(Integer empId) {
-        Integer rows = em.createNamedQuery("Employee.deleteByEmpId", Integer.class)
+        Integer rows = entityManager.createNamedQuery("Employee.deleteByEmpId", Integer.class)
                 .setParameter("empId", empId)
                 .executeUpdate();
         if (rows != 1) {
@@ -75,7 +74,7 @@ public class EmployeeDao implements Serializable {
     
     @Transactional(Transactional.TxType.REQUIRED)
     public Long countByEmpId(Integer empId) {
-        return em.createNamedQuery("Employee.countByEmpId", Long.class)
+        return entityManager.createNamedQuery("Employee.countByEmpId", Long.class)
                 .setParameter("empId", empId)
                 .getSingleResult();
     }

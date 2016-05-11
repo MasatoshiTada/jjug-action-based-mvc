@@ -14,7 +14,7 @@ import javax.transaction.Transactional;
 @Dependent
 public class EmployeeDao implements Serializable {
     @Inject
-    private EntityManager em;
+    EntityManager entityManager;
 
     /**
      * 
@@ -22,7 +22,7 @@ public class EmployeeDao implements Serializable {
      */
     @Transactional(Transactional.TxType.REQUIRED)
     public List<Employee> findAll() {
-        return em.createNamedQuery("Employee.findAll", Employee.class)
+        return entityManager.createNamedQuery("Employee.findAll", Employee.class)
                 .getResultList();
     }
     
@@ -34,7 +34,7 @@ public class EmployeeDao implements Serializable {
     @Transactional(Transactional.TxType.REQUIRED)
     public Optional<Employee> findByEmpId(Integer empId) {
         try {
-            Employee employee = em.createNamedQuery("Employee.findByEmpIdJoinFetchDepartment", Employee.class)
+            Employee employee = entityManager.createNamedQuery("Employee.findByEmpIdJoinFetchDepartment", Employee.class)
                     .setParameter("empId", empId)
                     .getSingleResult();
             return Optional.of(employee);
@@ -49,25 +49,24 @@ public class EmployeeDao implements Serializable {
      */
     @Transactional(Transactional.TxType.REQUIRED)
     public List<Employee> findByName(String nameKey) {
-        return em.createNamedQuery("Employee.findByNameJoinFetchDepartment", Employee.class)
+        return entityManager.createNamedQuery("Employee.findByNameJoinFetchDepartment", Employee.class)
                 .setParameter("name", "%" + nameKey + "%")
                 .getResultList();
-//        throw new RuntimeException(); // 実行時例外が発生するとロールバックされる
     }
     
     @Transactional(Transactional.TxType.REQUIRED)
     public void insert(Employee employee) {
-        em.persist(employee);
+        entityManager.persist(employee);
     }
     
     @Transactional(Transactional.TxType.REQUIRED)
     public void update(Employee employee) {
-        em.merge(employee);
+        entityManager.merge(employee);
     }
     
     @Transactional(Transactional.TxType.REQUIRED)
     public void delete(Integer empId) {
-        Integer rows = em.createNamedQuery("Employee.deleteByEmpId", Integer.class)
+        Integer rows = entityManager.createNamedQuery("Employee.deleteByEmpId", Integer.class)
                 .setParameter("empId", empId)
                 .executeUpdate();
         if (rows != 1) {
@@ -78,7 +77,7 @@ public class EmployeeDao implements Serializable {
     
     @Transactional(Transactional.TxType.REQUIRED)
     public Long countByEmpId(Integer empId) {
-        return em.createNamedQuery("Employee.countByEmpId", Long.class)
+        return entityManager.createNamedQuery("Employee.countByEmpId", Long.class)
                 .setParameter("empId", empId)
                 .getSingleResult();
     }
