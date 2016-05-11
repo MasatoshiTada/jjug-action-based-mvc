@@ -9,8 +9,8 @@
 <body>
 <p>社員IDを入力してください(77, 88, 99で例外発生)</p>
 
-<!-- 検証エラーメッセージの表示 -->
-<ul class="error" th:if="${bindingResult != null}">
+<!--/* 検証エラーメッセージの表示 */-->
+<ul class="error" th:if="${bindingResult}">
     <li th:each="message : ${bindingResult.allMessages}" th:text="${message}">ダミーのメッセージ</li>
 </ul>
 

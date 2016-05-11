@@ -6,8 +6,8 @@
     <title>結果画面</title>
 </head>
 <body>
-<p th:if="${employee == null}">該当する社員はいませんでした。</p>
-<table border="1" th:unless="${employee == null}">
+<p th:unless="${employee}">該当する社員はいませんでした。</p>
+<table border="1" th:if="${employee}">
     <tr><th>社員ID</th><th>氏名</th><th>入社年月日</th><th>部署ID</th><th>部署名</th></tr>
     <tr th:object="${employee}">
         <td th:text="*{empId}">99999</td>
