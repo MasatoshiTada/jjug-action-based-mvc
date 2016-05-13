@@ -1,24 +1,24 @@
 # 入力画面
-curl -v -H "Accept-Language: ja" http://localhost:8080/jjug-mvc10-1.0-SNAPSHOT/api/employee/index
-curl -v -H "Accept-Language: en" http://localhost:8080/jjug-mvc10-1.0-SNAPSHOT/api/employee/index
-curl -v -H "Accept-Language: cz" http://localhost:8080/jjug-mvc10-1.0-SNAPSHOT/api/employee/index
+curl -v -H "Accept: text/html" -H "Accept-Language: ja" http://localhost:8080/jjug-resteasy-html-1.0-SNAPSHOT/api/employee/index
+curl -v -H "Accept: text/html" -H "Accept-Language: en" http://localhost:8080/jjug-resteasy-html-1.0-SNAPSHOT/api/employee/index
+curl -v -H "Accept: text/html" -H "Accept-Language: cz" http://localhost:8080/jjug-resteasy-html-1.0-SNAPSHOT/api/employee/index
 
 # 結果画面（ID = 1）
-curl -v -H "Accept-Language: ja" http://localhost:8080/jjug-mvc10-1.0-SNAPSHOT/api/employee/result?id=1
-curl -v -H "Accept-Language: en" http://localhost:8080/jjug-mvc10-1.0-SNAPSHOT/api/employee/result?id=1
-curl -v -H "Accept-Language: cz" http://localhost:8080/jjug-mvc10-1.0-SNAPSHOT/api/employee/result?id=1
+curl -v -H "Accept: text/html" -H "Accept-Language: ja" http://localhost:8080/jjug-resteasy-html-1.0-SNAPSHOT/api/employee/result?id=1
+curl -v -H "Accept: text/html" -H "Accept-Language: en" http://localhost:8080/jjug-resteasy-html-1.0-SNAPSHOT/api/employee/result?id=1
+curl -v -H "Accept: text/html" -H "Accept-Language: cz" http://localhost:8080/jjug-resteasy-html-1.0-SNAPSHOT/api/employee/result?id=1
 
 # 結果画面（ID = 9）
-curl -v -H "Accept-Language: ja" http://localhost:8080/jjug-mvc10-1.0-SNAPSHOT/api/employee/result?id=9
-curl -v -H "Accept-Language: en" http://localhost:8080/jjug-mvc10-1.0-SNAPSHOT/api/employee/result?id=9
-curl -v -H "Accept-Language: cz" http://localhost:8080/jjug-mvc10-1.0-SNAPSHOT/api/employee/result?id=9
+curl -v -H "Accept: text/html" -H "Accept-Language: ja" http://localhost:8080/jjug-resteasy-html-1.0-SNAPSHOT/api/employee/result?id=9
+curl -v -H "Accept: text/html" -H "Accept-Language: en" http://localhost:8080/jjug-resteasy-html-1.0-SNAPSHOT/api/employee/result?id=9
+curl -v -H "Accept: text/html" -H "Accept-Language: cz" http://localhost:8080/jjug-resteasy-html-1.0-SNAPSHOT/api/employee/result?id=9
 
 # 入力画面（検証エラー時）
-curl -v -H "Accept-Language: ja" http://localhost:8080/jjug-mvc10-1.0-SNAPSHOT/api/employee/result?id=a
-curl -v -H "Accept-Language: en" http://localhost:8080/jjug-mvc10-1.0-SNAPSHOT/api/employee/result?id=a
-curl -v -H "Accept-Language: cz" http://localhost:8080/jjug-mvc10-1.0-SNAPSHOT/api/employee/result?id=a
+curl -v -H "Accept: text/html" -H "Accept-Language: ja" http://localhost:8080/jjug-resteasy-html-1.0-SNAPSHOT/api/employee/result?id=a
+curl -v -H "Accept: text/html" -H "Accept-Language: en" http://localhost:8080/jjug-resteasy-html-1.0-SNAPSHOT/api/employee/result?id=a
+curl -v -H "Accept: text/html" -H "Accept-Language: cz" http://localhost:8080/jjug-resteasy-html-1.0-SNAPSHOT/api/employee/result?id=a
 
 # エラー画面（ID = 99）
-curl -v -H "Accept-Language: ja" http://localhost:8080/jjug-mvc10-1.0-SNAPSHOT/api/employee/result?id=99
-curl -v -H "Accept-Language: en" http://localhost:8080/jjug-mvc10-1.0-SNAPSHOT/api/employee/result?id=99
-curl -v -H "Accept-Language: cz" http://localhost:8080/jjug-mvc10-1.0-SNAPSHOT/api/employee/result?id=99
+curl -v -H "Accept: text/html" -H "Accept-Language: ja" http://localhost:8080/jjug-resteasy-html-1.0-SNAPSHOT/api/employee/result?id=99
+curl -v -H "Accept: text/html" -H "Accept-Language: en" http://localhost:8080/jjug-resteasy-html-1.0-SNAPSHOT/api/employee/result?id=99
+curl -v -H "Accept: text/html" -H "Accept-Language: cz" http://localhost:8080/jjug-resteasy-html-1.0-SNAPSHOT/api/employee/result?id=99

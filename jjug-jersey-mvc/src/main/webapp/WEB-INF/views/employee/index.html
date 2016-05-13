@@ -3,11 +3,11 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>入力画面</title>
+    <title th:text="#{header.title}">入力画面</title>
     <link rel="stylesheet" href="../../../css/style.css" th:href="@{/css/style.css}">
 </head>
 <body>
-<p>社員IDを入力してください(77, 88, 99で例外発生)</p>
+<p th:text="#{message.input.empId}">社員IDを入力してください</p>
 
 <!--/* 検証エラーメッセージの表示 */-->
 <ul class="error" th:if="${violations}">
@@ -18,8 +18,8 @@
 </ul>
 
 <form action="./result.html" th:action="@{result}" method="get">
-    社員ID：<input type="text" name="id" value="" th:value="${param.id} ? ${param.id[0]} : ''">
-    <input type="submit" value="検索">
+    <span th:text="#{label.empId}">社員ID：</span><input type="text" name="id" value="" th:value="${param.id} ? ${param.id[0]} : ''">
+    <input type="submit" value="検索" th:value="#{button.search}">
 </form>
 </body>
 </html>

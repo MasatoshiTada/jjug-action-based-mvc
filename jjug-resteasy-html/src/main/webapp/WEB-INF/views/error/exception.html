@@ -3,10 +3,10 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>エラー画面</title>
+    <title th:text="#{header.title}">エラー画面</title>
 </head>
 <body>
 <p th:text="${exceptionDto.message}">エラーメッセージ</p>
-<a href="../employee/index.html" th:href="@{/index}">入力画面へ</a>
+<a href="../employee/index.html" th:href="@{/index}" th:text="#{link.input}">入力画面へ</a>
 </body>
 </html>
