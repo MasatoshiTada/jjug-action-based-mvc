@@ -1,25 +1,25 @@
 package com.example.rest.validation;
 
-import javax.validation.MessageInterpolator;
+import org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator;
+
 import java.util.Locale;
 
-public class LocalizedMessageInterpolator implements MessageInterpolator {
+public class LocalizedMessageInterpolator extends ResourceBundleMessageInterpolator {
 
-    private Locale locale;
-    private MessageInterpolator interpolator;
+    private final Locale locale;
 
-    public LocalizedMessageInterpolator(Locale locale, MessageInterpolator interpolator) {
+    public LocalizedMessageInterpolator(Locale locale) {
+        super(new NoFallbackControlResourceBundleLocator());
         this.locale = locale;
-        this.interpolator = interpolator;
     }
 
     @Override
     public String interpolate(String messageTemplate, Context context) {
-        return interpolator.interpolate(messageTemplate, context, locale);
+        return super.interpolate(messageTemplate, context, this.locale);
     }
 
     @Override
     public String interpolate(String messageTemplate, Context context, Locale locale) {
-        return interpolator.interpolate(messageTemplate, context, locale);
+        return super.interpolate(messageTemplate, context, locale);
     }
 }

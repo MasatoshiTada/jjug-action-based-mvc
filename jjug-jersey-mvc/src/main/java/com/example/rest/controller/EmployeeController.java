@@ -3,7 +3,7 @@ package com.example.rest.controller;
 import com.example.persistence.entity.Employee;
 import com.example.rest.form.EmployeeIdForm;
 import com.example.rest.thymeleaf.ThymeleafViewable;
-import com.example.rest.validation.MyValidator;
+import com.example.rest.validation.LocalizedValidator;
 import com.example.service.EmployeeService;
 
 import javax.enterprise.context.RequestScoped;
@@ -29,7 +29,7 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @Inject
-    private MyValidator validator;
+    private LocalizedValidator validator;
 
     @GET
     @Path("index")
