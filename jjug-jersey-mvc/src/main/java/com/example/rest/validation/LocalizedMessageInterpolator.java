@@ -1,4 +1,4 @@
-package com.example.common.validation;
+package com.example.rest.validation;
 
 import javax.validation.MessageInterpolator;
 import java.util.Locale;
