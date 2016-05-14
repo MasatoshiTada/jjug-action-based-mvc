@@ -4,11 +4,11 @@ import com.example.persistence.entity.Employee;
 import com.example.rest.thymeleaf.ThymeleafController;
 import com.example.rest.thymeleaf.ThymeleafView;
 import com.example.rest.form.EmployeeIdForm;
+import com.example.rest.validation.LocalizedValidator;
 import com.example.service.EmployeeService;
 
 import javax.inject.Inject;
 import javax.validation.ConstraintViolation;
-import javax.validation.Validator;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -23,7 +23,7 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @Inject
-    private Validator validator;
+    private LocalizedValidator validator;
 
     @GET
     @Path("index")
