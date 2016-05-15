@@ -4,11 +4,11 @@ import org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpo
 
 import java.util.Locale;
 
-public class LocalizedMessageInterpolator extends ResourceBundleMessageInterpolator {
+class LocalizedMessageInterpolator extends ResourceBundleMessageInterpolator {
 
     private final Locale locale;
 
-    public LocalizedMessageInterpolator(Locale locale) {
+    LocalizedMessageInterpolator(Locale locale) {
         super(new NoFallbackControlResourceBundleLocator());
         this.locale = locale;
     }
