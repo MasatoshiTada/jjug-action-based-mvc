@@ -44,9 +44,9 @@ public class EmployeeController {
         Set<ConstraintViolation<EmployeeIdForm>> violations = validator.validate(form);
         // エラーがあれば入力画面に戻る
         if (!violations.isEmpty()) {
-            HashMap<String, Object> model = new HashMap<>();
-            model.put("violations", violations);
-            return new ThymeleafViewable("employee/index.html", model);
+            HashMap<String, Object> models = new HashMap<>();
+            models.put("violations", violations);
+            return new ThymeleafViewable("employee/index.html", models);
         }
         Integer id = Integer.valueOf(form.getId());
         throwException(id);
