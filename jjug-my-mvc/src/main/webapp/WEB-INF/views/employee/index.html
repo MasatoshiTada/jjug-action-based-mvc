@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title th:text="#{header.title}">入力画面</title>
+    <link rel="stylesheet" href="../../../css/style.css" th:href="@{/css/style.css}">
+</head>
+<body>
+<p th:text="#{message.input.empId}">社員IDを入力してください</p>
+
+<!--/* 検証エラーメッセージの表示 */-->
+<ul class="error" th:if="${violations}">
+    <li th:each="violation : ${violations}" th:text="${violation.message}">ダミーのメッセージ1</li>
+    <!--/*-->
+    <li>ダミーのメッセージ2</li>
+    <!--*/-->
+</ul>
+
+<form action="./result.html" th:action="@{result}" method="get">
+    <span th:text="#{label.empId}">社員ID：</span><input type="text" name="id" value="" th:value="${param.id} ? ${param.id[0]} : ''">
+    <input type="submit" value="検索" th:value="#{button.search}">
+</form>
+</body>
+</html>
