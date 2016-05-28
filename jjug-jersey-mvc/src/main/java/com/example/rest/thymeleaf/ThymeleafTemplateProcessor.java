@@ -17,6 +17,7 @@ import org.glassfish.jersey.server.mvc.Viewable;
 import org.glassfish.jersey.server.mvc.spi.AbstractTemplateProcessor;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
+import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
@@ -46,6 +47,7 @@ public class ThymeleafTemplateProcessor extends AbstractTemplateProcessor<String
         templateResolver.setTemplateMode(TemplateMode.HTML);
         // setSuffix()は指定しない
         templateEngine = new TemplateEngine();
+        templateEngine.addDialect(new Java8TimeDialect());
         templateEngine.setTemplateResolver(templateResolver);
     }
 

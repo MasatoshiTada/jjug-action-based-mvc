@@ -2,6 +2,7 @@ package com.example.rest.thymeleaf;
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
+import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
@@ -36,6 +37,7 @@ public class ThymeleafViewEngine implements ViewEngine {
         resolver.setPrefix("/WEB-INF/views/");
         resolver.setTemplateMode(TemplateMode.HTML);
         templateEngine = new TemplateEngine();
+        templateEngine.addDialect(new Java8TimeDialect());
         templateEngine.setTemplateResolver(resolver);
     }
 

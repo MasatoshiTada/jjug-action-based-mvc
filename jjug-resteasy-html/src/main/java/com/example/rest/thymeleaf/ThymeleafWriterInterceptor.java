@@ -10,6 +10,7 @@ import javax.ws.rs.ext.WriterInterceptor;
 import javax.ws.rs.ext.WriterInterceptorContext;
 
 import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
@@ -29,6 +30,7 @@ public class ThymeleafWriterInterceptor implements WriterInterceptor {
         templateResolver.setTemplateMode(TemplateMode.HTML);
         // setSuffix()は指定しない
         templateEngine = new TemplateEngine();
+        templateEngine.addDialect(new Java8TimeDialect());
         templateEngine.setTemplateResolver(templateResolver);
     }
 

@@ -3,6 +3,7 @@ package com.example.rest.thymeleaf;
 import org.glassfish.jersey.internal.util.collection.Ref;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
+import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
@@ -45,6 +46,7 @@ public class ThymeleafWriter implements MessageBodyWriter<ThymeleafViewable> {
         templateResolver.setPrefix("/WEB-INF/views/");
         templateResolver.setTemplateMode(TemplateMode.HTML);
         templateEngine = new TemplateEngine();
+        templateEngine.addDialect(new Java8TimeDialect());
         templateEngine.setTemplateResolver(templateResolver);
     }
 

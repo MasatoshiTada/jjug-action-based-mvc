@@ -1,20 +1,11 @@
 package com.example.persistence.entity;
 
+import com.example.persistence.converter.LocalDateConverter;
+
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.TableGenerator;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 @Entity
 @NamedQueries({
@@ -43,9 +34,9 @@ public class Employee implements Serializable {
     @Column(length = 40, nullable = false)
     private String name;
     
-    @Temporal(TemporalType.DATE)
     @Column(name = "joined_date")
-    private Date joinedDate;
+    @Convert(converter = LocalDateConverter.class)
+    private LocalDate joinedDate;
     
     @ManyToOne
     @JoinColumn(name = "dept_id", referencedColumnName = "dept_id")
@@ -82,14 +73,14 @@ public class Employee implements Serializable {
     /**
      * @return the joinedDate
      */
-    public Date getJoinedDate() {
+    public LocalDate getJoinedDate() {
         return joinedDate;
     }
 
     /**
      * @param joinedDate the joinedDate to set
      */
-    public void setJoinedDate(Date joinedDate) {
+    public void setJoinedDate(LocalDate joinedDate) {
         this.joinedDate = joinedDate;
     }
 
