@@ -47,6 +47,7 @@ public class ThymeleafWriter implements MessageBodyWriter<ThymeleafViewable> {
         templateResolver.setTemplateMode(TemplateMode.HTML);
         templateEngine = new TemplateEngine();
         templateEngine.addDialect(new Java8TimeDialect());
+        templateEngine.addDialect(new CdiDialect());
         templateEngine.setTemplateResolver(templateResolver);
     }
 

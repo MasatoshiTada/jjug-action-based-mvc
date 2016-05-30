@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../../css/style.css" th:href="@{/css/style.css}">
 </head>
 <body>
+<p th:text="${#cdis.getBean('sessionDto').id}">セッションごとのランダムな整数</p>
 <p th:text="#{message.input.empId}">社員IDを入力してください</p>
 
 <!--/* 検証エラーメッセージの表示 */-->
