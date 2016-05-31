@@ -9,7 +9,7 @@ public class CdiDialect extends AbstractDialect implements IExpressionObjectDial
     private static final IExpressionObjectFactory EXPRESSION_OBJECT_FACTORY = new CdiExpressionFactory();
 
     public CdiDialect() {
-        super("cdis");
+        super("cdi");
     }
 
     @Override

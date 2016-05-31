@@ -5,9 +5,9 @@ import javax.enterprise.inject.spi.BeanManager;
 import javax.enterprise.inject.spi.CDI;
 import java.util.Set;
 
-public class Cdis {
+public class Cdi {
 
-    public Object getBean(String name) {
+    public Object bean(String name) {
         CDI<Object> cdi = CDI.current();
         BeanManager beanManager = cdi.getBeanManager();
         Set<Bean<?>> beans = beanManager.getBeans(name);
