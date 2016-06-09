@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 import java.util.Locale;
 import java.util.Set;
 
@@ -18,11 +19,11 @@ public class LocalizedValidator {
     public <T> Set<ConstraintViolation<T>> validate(T object, Class<?>... groups) {
         Locale locale = httpServletRequest.getLocale();
         System.out.println("[" + this.getClass().getSimpleName() + "] locale = " + locale);
-        Validator validator = Validation.byDefaultProvider()
+        ValidatorFactory factory = Validation.byDefaultProvider()
                 .configure()
                 .messageInterpolator(new LocalizedMessageInterpolator(locale))
-                .buildValidatorFactory()
-                .getValidator();
+                .buildValidatorFactory();
+        Validator validator = factory.getValidator();
         return validator.validate(object, groups);
     }
 }
