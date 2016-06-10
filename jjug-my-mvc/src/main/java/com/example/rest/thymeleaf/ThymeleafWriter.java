@@ -1,7 +1,6 @@
 package com.example.rest.thymeleaf;
 
 import com.example.thymeleaf.CdiDialect;
-import org.glassfish.jersey.internal.util.collection.Ref;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
@@ -15,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.MessageBodyWriter;
@@ -33,10 +33,10 @@ public class ThymeleafWriter implements MessageBodyWriter<ThymeleafViewable> {
 
     private TemplateEngine templateEngine;
 
-    @Inject
-    private javax.inject.Provider<Ref<HttpServletRequest>> requestProviderRef;
-    @Inject
-    private javax.inject.Provider<Ref<HttpServletResponse>> responseProviderRef;
+    @Context
+    private HttpServletRequest httpServletRequest;
+    @Context
+    private HttpServletResponse httpServletResponse;
     @Inject
     private ServletContext servletContext;
 
@@ -64,8 +64,6 @@ public class ThymeleafWriter implements MessageBodyWriter<ThymeleafViewable> {
 
     @Override
     public void writeTo(ThymeleafViewable thymeleafViewable, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream) throws IOException, WebApplicationException {
-        HttpServletRequest httpServletRequest = requestProviderRef.get().get();
-        HttpServletResponse httpServletResponse = responseProviderRef.get().get();
         WebContext webContext = new WebContext(httpServletRequest, httpServletResponse,
                 servletContext, httpServletRequest.getLocale());
         webContext.setVariables(thymeleafViewable.getModels());
