@@ -1,7 +1,7 @@
 package com.example.rest.validation;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.spi.CDI;
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -16,18 +16,18 @@ public class LocalizedValidator {
 
     private ConcurrentMap<Locale, Validator> validatorCache = new ConcurrentHashMap<>();
 
+    @Inject
+    private HttpServletRequest httpServletRequest;
+
     public <T> Set<ConstraintViolation<T>> validate(T object, Class<?>... groups) {
-        HttpServletRequest httpServletRequest = CDI.current().select(HttpServletRequest.class).get();
         Locale locale = httpServletRequest.getLocale();
-        System.out.println("[" + this.getClass().getSimpleName() + "] locale = " + locale);
-        Validator validator = validatorCache.computeIfAbsent(locale, (keyLocale) -> {
-            System.out.println("Created: " + keyLocale);
-            return Validation.byDefaultProvider()
+        Validator validator = validatorCache.computeIfAbsent(locale, (keyLocale) ->
+            Validation.byDefaultProvider()
                     .configure()
                     .messageInterpolator(new LocalizedMessageInterpolator(keyLocale))
                     .buildValidatorFactory()
-                    .getValidator();
-        });
+                    .getValidator()
+        );
         return validator.validate(object, groups);
     }
 }

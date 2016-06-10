@@ -4,6 +4,7 @@ import org.hibernate.validator.spi.resourceloading.ResourceBundleLocator;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.ResourceBundle.Control;
 
 /**
  * 指定されたロケールのValidationMessagesが無かった場合は、
@@ -11,12 +12,10 @@ import java.util.ResourceBundle;
  *
  * @see http://itpro.nikkeibp.co.jp/article/COLUMN/20071102/286295/
  */
-class NoFallbackControlResourceBundleLocator implements ResourceBundleLocator {
+class NoFallbackResourceBundleLocator implements ResourceBundleLocator {
     @Override
     public ResourceBundle getResourceBundle(Locale locale) {
-        ResourceBundle.Control control =
-                ResourceBundle.Control.getNoFallbackControl(
-                        ResourceBundle.Control.FORMAT_DEFAULT);
+        Control control = Control.getNoFallbackControl(Control.FORMAT_DEFAULT);
         ResourceBundle bundle = ResourceBundle.getBundle("ValidationMessages", locale, control);
         return bundle;
     }

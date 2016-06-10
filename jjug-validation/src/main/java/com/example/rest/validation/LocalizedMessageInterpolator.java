@@ -9,7 +9,7 @@ class LocalizedMessageInterpolator extends ResourceBundleMessageInterpolator {
     private final Locale locale;
 
     LocalizedMessageInterpolator(Locale locale) {
-        super(new NoFallbackControlResourceBundleLocator());
+        super(new NoFallbackResourceBundleLocator());
         this.locale = locale;
     }
 
