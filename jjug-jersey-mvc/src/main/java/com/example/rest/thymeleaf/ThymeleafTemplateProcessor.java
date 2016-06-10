@@ -1,6 +1,7 @@
 package com.example.rest.thymeleaf;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import javax.inject.Inject;
@@ -11,7 +12,6 @@ import javax.ws.rs.core.Configuration;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.Provider;
-import org.glassfish.jersey.internal.util.collection.Ref;
 import org.glassfish.jersey.server.mvc.MvcFeature;
 import org.glassfish.jersey.server.mvc.Viewable;
 import org.glassfish.jersey.server.mvc.spi.AbstractTemplateProcessor;
@@ -33,9 +33,9 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 public class ThymeleafTemplateProcessor extends AbstractTemplateProcessor<String> {
 
     @Inject
-    private javax.inject.Provider<Ref<HttpServletRequest>> requestProviderRef;
+    private HttpServletRequest httpServletRequest;
     @Inject
-    private javax.inject.Provider<Ref<HttpServletResponse>> responseProviderRef;
+    private HttpServletResponse httpServletResponse;
 
     private TemplateEngine templateEngine;
 
@@ -59,9 +59,6 @@ public class ThymeleafTemplateProcessor extends AbstractTemplateProcessor<String
     @Override
     public void writeTo(String templateReference, Viewable viewable, MediaType mediaType,
             MultivaluedMap<String, Object> httpHeaders, OutputStream out) throws IOException {
-        HttpServletRequest httpServletRequest = requestProviderRef.get().get();
-        HttpServletResponse httpServletResponse = responseProviderRef.get().get();
-        httpServletResponse.setCharacterEncoding("UTF-8");
         WebContext webContext = new WebContext(
                 httpServletRequest, httpServletResponse, 
                 super.getServletContext(), httpServletRequest.getLocale());
@@ -74,7 +71,7 @@ public class ThymeleafTemplateProcessor extends AbstractTemplateProcessor<String
             variables.put("model", model);
             webContext.setVariables(variables);
         }
-        try (Writer writer = new OutputStreamWriter(out)) {
+        try (Writer writer = new OutputStreamWriter(out, StandardCharsets.UTF_8)) {
             templateEngine.process(viewable.getTemplateName(), webContext, writer);
         }
     }
