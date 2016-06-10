@@ -1,4 +1,4 @@
-package com.example.rest.thymeleaf;
+package com.example.thymeleaf;
 
 import javax.enterprise.inject.spi.Bean;
 import javax.enterprise.inject.spi.BeanManager;

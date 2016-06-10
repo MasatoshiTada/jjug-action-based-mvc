@@ -1,4 +1,4 @@
-package com.example.rest.thymeleaf;
+package com.example.thymeleaf;
 
 import org.thymeleaf.context.IExpressionContext;
 import org.thymeleaf.expression.IExpressionObjectFactory;

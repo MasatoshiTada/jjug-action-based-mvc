@@ -1,5 +1,6 @@
 package com.example.rest.thymeleaf;
 
+import com.example.thymeleaf.CdiDialect;
 import org.glassfish.jersey.internal.util.collection.Ref;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;

@@ -1,4 +1,4 @@
-package com.example.rest.thymeleaf;
+package com.example.thymeleaf;
 
 import org.thymeleaf.dialect.AbstractDialect;
 import org.thymeleaf.dialect.IExpressionObjectDialect;
