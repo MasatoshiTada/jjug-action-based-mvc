@@ -34,7 +34,7 @@ public class ThymeleafViewEngine implements ViewEngine {
     public void init() {
         ServletContextTemplateResolver resolver =
                 new ServletContextTemplateResolver(servletContext);
-        resolver.setPrefix("/WEB-INF/views/");
+        resolver.setPrefix(DEFAULT_VIEW_FOLDER);
         resolver.setTemplateMode(TemplateMode.HTML);
         templateEngine = new TemplateEngine();
         templateEngine.addDialect(new Java8TimeDialect());
