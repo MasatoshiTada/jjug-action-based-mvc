@@ -50,11 +50,4 @@ public class EmployeeDaoTest {
         assertFalse(employeeOptional.isPresent());
     }
 
-    @Test
-    public void 入社年月日はjava_util_Date型() {
-        Optional<Employee> employeeOptional = employeeDao.findByEmpId(1);
-        Employee employee = employeeOptional.get();
-        assertThat(employee.getJoinedDate().getClass().getName(),
-                is("java.util.Date"));
-    }
 }

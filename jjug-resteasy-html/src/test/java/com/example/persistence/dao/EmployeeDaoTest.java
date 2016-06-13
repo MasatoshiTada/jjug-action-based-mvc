@@ -47,10 +47,4 @@ public class EmployeeDaoTest {
         assertNull(employee);
     }
 
-    @Test
-    public void 入社年月日はjava_sql_Date型() {
-        Employee employee = employeeDao.findByEmpId(1);
-        assertThat(employee.getJoinedDate().getClass().getName(),
-                is("java.sql.Date"));
-    }
 }

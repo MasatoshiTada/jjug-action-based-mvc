@@ -14,23 +14,4 @@
       <property name="eclipselink.target-database" value="JavaDB"/>
     </properties>
   </persistence-unit>
-  <persistence-unit name="testPU" transaction-type="RESOURCE_LOCAL">
-    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>com.example.persistence.entity.Employee</class>
-    <class>com.example.persistence.entity.Department</class>
-    <exclude-unlisted-classes>false</exclude-unlisted-classes>
-    <shared-cache-mode>NONE</shared-cache-mode>
-    <validation-mode>NONE</validation-mode>
-    <properties>
-      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sun-appserv-samples;create=true"/>
-      <property name="javax.persistence.jdbc.user" value="app"/>
-      <property name="javax.persistence.jdbc.password" value="app"/>
-      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
-      <property name="javax.persistence.sql-load-script-source" value="META-INF/sql/insert_data.sql"/>
-      <property name="eclipselink.logging.level" value="FINE"/>
-      <property name="eclipselink.logging.parameters" value="true"/>
-      <property name="eclipselink.target-database" value="JavaDB"/>
-    </properties>
-  </persistence-unit>
 </persistence>
